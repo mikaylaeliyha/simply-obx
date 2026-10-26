@@ -34,19 +34,12 @@ const arcadePhotos = [
     { image: "arcade8.png", alt: "Air hockey and arcade games" }
 ];
 
-const vapePhotos = [
-    { image: "vapeshop.png", alt: "Glassware, accessories, and products in the vape shop" },
-    { image: "vapeshop2.png", alt: "Shelves of vape devices and accessories" },
-    { image: "vapeshop3.png", alt: "A selection of vape shop products and accessories" },
-    { image: "vapeshop4.png", alt: "Cigars, tobacco products, and accessories in store" }
-];
-
-const arcadePrompts = [
-    "Find your new favorite game!",
-    "Bring your best game face!",
-    "A little friendly competition?",
-    "Make time for one more round!"
-];
+// const vapePhotos = [
+//     { image: "vapeshop.png", alt: "Glassware, accessories, and products in the vape shop" },
+//     { image: "vapeshop2.png", alt: "Shelves of vape devices and accessories" },
+//     { image: "vapeshop3.png", alt: "A selection of vape shop products and accessories" },
+//     { image: "vapeshop4.png", alt: "Cigars, tobacco products, and accessories in store" }
+// ];
 
 const directionsUrl = "https://www.google.com/maps/search/?api=1&query=40194%20Tuna%20Terrace%2C%20Avon%2C%20NC%2027915";
 
@@ -55,10 +48,10 @@ function Header({ menuOpen, setMenuOpen }) {
 
     return (
         <>
-            <div className="announcement"><span>Family run · Avon, North Carolina</span> — your little piece of the OBX</div>
+            <div className="announcement"><span>Avon, North Carolina</span> — your little piece of the OBX</div>
             <header className="site-header">
                 <a className="brand" href="index.html" aria-label="Simply OBX home">
-                    <span className="brand-mark" aria-hidden="true">🐚</span> simply OBX
+                    <span className="brand-mark" aria-hidden="true">🐚</span> Simply OBX
                 </a>
                 <button
                     className="button menu-toggle"
@@ -70,9 +63,8 @@ function Header({ menuOpen, setMenuOpen }) {
                     Explore
                 </button>
                 <nav id="main-navigation" className="nav-links" aria-label="Main navigation">
-                    <a href="index.html#shop" onClick={closeMenu}>What’s in store</a>
+                    <a href="index.html#home" onClick={closeMenu}>Home</a>
                     <a href="arcade.html" onClick={closeMenu}>X-Treme Arcade</a>
-                    <a href="vape-shop.html" onClick={closeMenu}>Vape shop</a>
                     <a href="index.html#visit" onClick={closeMenu}>Find us</a>
                 </nav>
             </header>
@@ -83,8 +75,8 @@ function Header({ menuOpen, setMenuOpen }) {
 function Footer() {
     return (
         <footer className="site-footer">
-            <a className="brand" href="index.html"><span className="brand-mark" aria-hidden="true">🐚</span> simply OBX</a>
-            <p>Family run, a one stop shop for all your OBX needs!</p>
+            <a className="brand" href="index.html"><span className="brand-mark" aria-hidden="true">🐚</span> Simply OBX</a>
+            <p>A one stop shop for all your OBX needs!</p>
             <p>Avon, North Carolina · <a href="tel:+12529950935">(252) 995-0935</a></p>
             <BackToTop />
         </footer>
@@ -227,15 +219,6 @@ function HomePage() {
     const [menuOpen, setMenuOpen] = React.useState(false);
     const [spinning, setSpinning] = React.useState(false);
     const [rotation, setRotation] = React.useState(0);
-    const [arcadeMessage, setArcadeMessage] = React.useState("Give it a spin for your next arcade idea.");
-
-    const spinWheel = () => {
-        if (spinning) return;
-        setSpinning(true);
-        setRotation((current) => current + 1440 + Math.random() * 720);
-        setArcadeMessage(arcadePrompts[Math.floor(Math.random() * arcadePrompts.length)]);
-        window.setTimeout(() => setSpinning(false), 3300);
-    };
 
     return (
         <div className="page-wrap">
@@ -246,16 +229,14 @@ function HomePage() {
                     <div className="hero-content">
                         <p className="eyebrow">A family-run Outer Banks shop</p>
                         <h1 id="hero-title">The coast looks good on you.</h1>
-                        <p className="hero-copy">Find Outer Banks apparel, souvenirs, and beach gear, then stick around for X-Treme Arcade and our vape shop. We’d love to see you in Avon!</p>
+                        <p className="hero-copy">Find Outer Banks apparel, souvenirs, and beach gear, then stick around to play games at our X-Treme Arcade. We’d love to see you in Avon!</p>
                         <a className="button button-light" href="#shop">Take a peek in store <span aria-hidden="true">→</span></a>
                     </div>
-                    <div className="hero-note" aria-hidden="true"><span>OBX</span> salt in<br />your hair</div>
                 </section>
 
                 <section className="intro" aria-labelledby="intro-title">
-                    <p className="eyebrow">Good things, this way <span className="shell" aria-hidden="true">✳</span></p>
                     <h2 id="intro-title">Your happy place, <em>in store.</em></h2>
-                    <p>We’re a family-run business offering a wide selection of Outer Banks apparel, souvenirs, and beach gear, plus X-Treme Arcade and a vape shop. Stop in, say hello, and find a little something for your beach day.</p>
+                    <p>We’re a family-run business offering a wide selection of Outer Banks apparel, souvenirs, and beach gear, plus an X-Treme Arcade. Stop in, say hello, and find a little something for your vacation.</p>
                 </section>
 
                 <section className="shop-section" id="shop" aria-labelledby="shop-title">
@@ -271,12 +252,15 @@ function HomePage() {
                         <p>Come see us in Avon to browse our full selection.</p>
                     </div>
                     <PhotoGallery photos={storePhotos} className="store-gallery" />
-                    <div className="coming-soon">
+                    <div className="candy-announcement">
                         <div className="candy-photo-frame">
                             <img className="candy-photo" src="candy.JPG" alt="Colorful candy jars in the new candy section" />
                         </div>
-                        <div><p className="eyebrow">A sweet new treat</p><h3>Candy is coming soon!</h3></div>
-                        <span className="coming-soon-label">Coming soon</span>
+                        <div className="candy-copy">
+                            <h3>Candy is coming soon!</h3>
+                            <p>We’re making room for a new candy section. Check back soon for a little extra sweetness on your next visit.</p>
+                        </div>
+                        <span className="candy-status">Coming soon</span>
                     </div>
                     <p className="pricing-note">Photos show examples of items and displays at our store; selection may vary. No online ordering or checkout is available yet.</p>
                 </section>
@@ -293,14 +277,10 @@ function HomePage() {
                     </div>
                 </section>
 
-                <section className="business-links" aria-label="Explore more at Simply OBX">
+                <section className="business-links" aria-label="Explore X-Treme Arcade">
                     <a className="business-link" href="arcade.html">
                         <img src="arcade.png" alt="" loading="lazy" />
                         <span>Visit X-Treme Arcade <span aria-hidden="true">→</span></span>
-                    </a>
-                    <a className="business-link" href="vape-shop.html">
-                        <img src="vapeshop3.png" alt="" loading="lazy" />
-                        <span>Explore the vape shop <span aria-hidden="true">→</span></span>
                     </a>
                 </section>
 
@@ -331,9 +311,8 @@ function ArcadePage() {
                 <section className="interior-hero arcade-hero" aria-labelledby="page-title">
                     <img src="arcade.JPG" alt="Bright lights and arcade machines at X-Treme Arcade" />
                     <div className="interior-hero-copy">
-                        <p className="eyebrow">Play a little longer</p>
                         <h1 id="page-title">X-Treme Arcade</h1>
-                        <p>Make room for one more round. Bring your crew to our Avon arcade for bright lights, friendly competition, and prizes to take home.</p>
+                        <p>Bring your crew to our Avon arcade for a friendly competition and prizes to take home.</p>
                         <a className="button button-light" href="#games">See the arcade <span aria-hidden="true">↓</span></a>
                     </div>
                 </section>
@@ -350,13 +329,13 @@ function ArcadePage() {
                         <article><span aria-hidden="true">01</span><h3>Air hockey</h3><p>Go head-to-head and see who gets the winning shot.</p></article>
                         <article><span aria-hidden="true">02</span><h3>Arcade & video games</h3><p>Bright screens, quick rounds, and lots of ways to play.</p></article>
                         <article><span aria-hidden="true">03</span><h3>Prize & redemption games</h3><p>Try your luck, collect tickets, and choose a prize.</p></article>
-                        <article><span aria-hidden="true">04</span><h3>Sports & skill games</h3><p>Challenge your friends to a little friendly competition.</p></article>
+                        <article><span aria-hidden="true">04</span><h3>Sports & skill games</h3><p>Challenge your friends/family to a little friendly competition.</p></article>
                     </div>
                     <PhotoGallery photos={arcadePhotos} className="arcade-gallery" />
                 </section>
                 <section className="visit-section">
                     <div className="visit-inner">
-                        <div><p className="eyebrow">Your next round is in Avon</p><h2>Come visit X-Treme Arcade.</h2><p className="visit-copy">Stop by Simply OBX at 40194 Tuna Terrace in Avon. Call ahead for current hours or to ask about the arcade.</p></div>
+                        <div><h2>Come visit X-Treme Arcade.</h2><p className="visit-copy">Stop by the X-Treme Arcade at Simply OBX in Avon!</p></div>
                         <VisitCard />
                     </div>
                 </section>
@@ -366,52 +345,52 @@ function ArcadePage() {
     );
 }
 
-function VapeShopPage() {
-    const [menuOpen, setMenuOpen] = React.useState(false);
+// function VapeShopPage() {
+//     const [menuOpen, setMenuOpen] = React.useState(false);
 
-    return (
-        <div className="page-wrap">
-            <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-            <main className="interior-main vape-main">
-                <section className="interior-hero vape-hero" aria-labelledby="page-title">
-                    <img src="vapeshop3.png" alt="Vape Shop sign and product illustration" />
-                    <div className="interior-hero-copy">
-                        <p className="eyebrow">An in-store department at Simply OBX</p>
-                        <h1 id="page-title">The vape shop.</h1>
-                        <p>Browse our in-store selection of vaping products, accessories, and more at our Avon location.</p>
-                        <a className="button button-light" href="#selection">See the in-store selection <span aria-hidden="true">↓</span></a>
-                    </div>
-                </section>
-                <section className="age-notice" aria-label="Age restriction">
-                    <span className="age-mark">21+</span>
-                    <div><h2>Adults only</h2><p>Must be 21 or older to enter the vape shop or purchase age-restricted products. Valid photo ID is required. We do not sell these products online.</p></div>
-                </section>
-                <section className="vape-selection" id="selection" aria-labelledby="selection-title">
-                    <div className="section-heading">
-                        <div><p className="eyebrow">A look at what’s in store</p><h2 id="selection-title">Visit us to browse.</h2></div>
-                        <p>Product selection may vary. Call or stop in to ask about current availability.</p>
-                    </div>
-                    <div className="vape-categories">
-                        <article><span aria-hidden="true">01</span><h3>Vape devices & supplies</h3><p>Explore the in-store assortment of devices and vaping supplies.</p></article>
-                        <article><span aria-hidden="true">02</span><h3>Glassware & accessories</h3><p>Browse the glassware and accessories available in store.</p></article>
-                        <article><span aria-hidden="true">03</span><h3>Tobacco products</h3><p>Ask us in person about the current tobacco and cigar selection.</p></article>
-                    </div>
-                    <PhotoGallery photos={vapePhotos} className="vape-gallery" />
-                    <p className="pricing-note">For adults 21+ only. ID is required for age-restricted purchases. No online ordering, prices, or shipping are offered on this site.</p>
-                </section>
-                <section className="visit-section">
-                    <div className="visit-inner">
-                        <div><p className="eyebrow">Visit us in Avon</p><h2>Stop by the shop.</h2><p className="visit-copy">Our vape shop is inside Simply OBX at 40194 Tuna Terrace, Avon, NC. Call us with questions about current in-store selection.</p></div>
-                        <VisitCard />
-                    </div>
-                </section>
-            </main>
-            <Footer />
-        </div>
-    );
-}
+//     return (
+//         <div className="page-wrap">
+//             <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+//             <main className="interior-main vape-main">
+//                 <section className="interior-hero vape-hero" aria-labelledby="page-title">
+//                     <img src="vapeshop3.png" alt="Vape Shop sign and product illustration" />
+//                     <div className="interior-hero-copy">
+//                         <p className="eyebrow">An in-store department at Simply OBX</p>
+//                         <h1 id="page-title">The vape shop.</h1>
+//                         <p>Browse our in-store selection of vaping products, accessories, and more at our Avon location.</p>
+//                         <a className="button button-light" href="#selection">See the in-store selection <span aria-hidden="true">↓</span></a>
+//                     </div>
+//                 </section>
+//                 <section className="age-notice" aria-label="Age restriction">
+//                     <span className="age-mark">21+</span>
+//                     <div><h2>Adults only</h2><p>Must be 21 or older to enter the vape shop or purchase age-restricted products. Valid photo ID is required. We do not sell these products online.</p></div>
+//                 </section>
+//                 <section className="vape-selection" id="selection" aria-labelledby="selection-title">
+//                     <div className="section-heading">
+//                         <div><p className="eyebrow">A look at what’s in store</p><h2 id="selection-title">Visit us to browse.</h2></div>
+//                         <p>Product selection may vary. Call or stop in to ask about current availability.</p>
+//                     </div>
+//                     <div className="vape-categories">
+//                         <article><span aria-hidden="true">01</span><h3>Vape devices & supplies</h3><p>Explore the in-store assortment of devices and vaping supplies.</p></article>
+//                         <article><span aria-hidden="true">02</span><h3>Glassware & accessories</h3><p>Browse the glassware and accessories available in store.</p></article>
+//                         <article><span aria-hidden="true">03</span><h3>Tobacco products</h3><p>Ask us in person about the current tobacco and cigar selection.</p></article>
+//                     </div>
+//                     <PhotoGallery photos={vapePhotos} className="vape-gallery" />
+//                     <p className="pricing-note">For adults 21+ only. ID is required for age-restricted purchases. No online ordering, prices, or shipping are offered on this site.</p>
+//                 </section>
+//                 <section className="visit-section">
+//                     <div className="visit-inner">
+//                         <div><p className="eyebrow">Visit us in Avon</p><h2>Stop by the shop.</h2><p className="visit-copy">Simply OBX is at 40194 Tuna Terrace, Avon, NC. Call us with questions about current in-store selection.</p></div>
+//                         <VisitCard />
+//                     </div>
+//                 </section>
+//             </main>
+//             <Footer />
+//         </div>
+//     );
+// }
 
 const page = document.body.dataset.page;
-const Page = page === "arcade" ? ArcadePage : page === "vape" ? VapeShopPage : HomePage;
+const Page = page === "arcade" ? ArcadePage : HomePage;
 
 ReactDOM.createRoot(document.getElementById("root")).render(<Page />);
